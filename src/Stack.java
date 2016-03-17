@@ -19,9 +19,9 @@ public class Stack {
         return (this.data.size() == maxSize);
     }
 
-    public void push (int topush){
+    public void push (int toPush){
         guardAgainstBeingFull();
-        data.add(topush);
+        data.add(toPush);
     }
 
     public int pop (){
@@ -32,11 +32,14 @@ public class Stack {
         return toGoOut;
     }
 
-    public int top (){
+    public int top(){
         guardAgainstBeingEmpty();
         int topIndex = this.data.size() - 1;
-        int toGoOut = this.data.get(topIndex);
-        return toGoOut;
+        return (this.data.get(topIndex));
+    }
+
+    public int size(){
+        return (this.data.size());
     }
 
     private void guardAgainstBeingEmpty() {

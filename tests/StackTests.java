@@ -154,7 +154,7 @@ public class StackTests {
     public void we_can_get_the_size_of_an_empty_stack(){
         Stack s = new Stack();
 
-        assertEquals(0, s.data.size());
+        assertEquals(0, s.size());
     }
 
     @Test
@@ -167,6 +167,6 @@ public class StackTests {
         s.push(4);
         s.push(5);
 
-        assertEquals(5, s.data.size());
+        assertEquals(5, s.size());
     }
 }

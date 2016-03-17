@@ -28,8 +28,7 @@ public class QueueTests {
         Queue q = new Queue();
 
         q.push(5);
-        q.pop();
 
-        assertEquals(q.pop(), 5);
+        assertEquals(5, q.pop());
     }
 }
