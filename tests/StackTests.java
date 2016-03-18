@@ -20,7 +20,7 @@ public class StackTests {
 
         s.push(5);
 
-        assertTrue(s.data.size() == 1);
+        assertEquals(1,s.size());
         assertFalse(s.isEmpty());
     }
 
@@ -29,10 +29,9 @@ public class StackTests {
         Stack s = new Stack();
 
         s.push(5);
-        int out = s.pop();
 
-        assertTrue(s.data.size() == 0);
-        assertEquals(out, 5);
+        assertEquals(5,s.pop());
+        assertTrue(s.isEmpty());
     }
 
     @Test(expected = StackEmptyException.class)
@@ -48,7 +47,7 @@ public class StackTests {
 
         s.push(7);
 
-        assertEquals(s.top(), 7);
+        assertEquals(7,s.top());
     }
 
     @Test(expected = StackEmptyException.class)
@@ -59,7 +58,7 @@ public class StackTests {
     }
 
     @Test
-    public void can_we_push_nutiple_items(){
+    public void can_we_push_multiple_items(){
         Stack s = new Stack();
 
         s.push(1);
@@ -67,10 +66,11 @@ public class StackTests {
         s.push(3);
         s.push(4);
 
-        assertTrue(s.data.size() == 4);
+        assertEquals(5,s.size());
         assertFalse(s.isEmpty());
     }
 
+    //Also tests to see if it follows the FILO order
     @Test
     public void can_we_pop_mutiple_items(){
         Stack s = new Stack();
@@ -81,22 +81,8 @@ public class StackTests {
         assertEquals(s.pop(), 3);
         assertEquals(s.pop(), 2);
         assertEquals(s.pop(), 1);
-        assertTrue(s.data.size() == 0);
-    }
-
-    @Test
-    public void the_stack_follows_filo_order(){
-        Stack s = new Stack();
-
-        s.push(1);
-        s.push(2);
-        s.push(3);
-        s.push(4);
-
-        assertEquals(s.pop(), 4);
-        assertEquals(s.pop(), 3);
-        assertEquals(s.pop(), 2);
-        assertEquals(s.pop(), 1);
+        assertTrue(s.isEmpty());
+        assertEquals(0,s.size());
     }
 
     @Test(expected = StackEmptyException.class)
@@ -136,19 +122,9 @@ public class StackTests {
         s.push(5);
         s.push(6);
 
-        assertEquals(s.data.size(), 5);
+        assertEquals(5,s.size());
     }
 
-    @Test(expected = StackEmptyException.class)
-    public void we_cant_underflow_the_stack(){
-        Stack s = new Stack();
-
-        s.push(1);
-        s.pop();
-        s.pop();
-
-        assertEquals(s.data.size(),0);
-    }
 
     @Test
     public void we_can_get_the_size_of_an_empty_stack(){

@@ -30,6 +30,7 @@ public class Queue {
     }
 
     public int bottom(){
+        guardAgainstBeingEmpty();
         return (this.data.get(0));
     }
 
