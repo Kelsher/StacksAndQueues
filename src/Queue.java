@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class Queue {
-    ArrayList<Integer> data;
+public class Queue<T> {
+    ArrayList<T> data;
     int maxSize;
 
     public Queue(){
-        data = new ArrayList<Integer>();
+        data = new ArrayList<T>();
         maxSize = 5;
     }
 
@@ -17,19 +17,19 @@ public class Queue {
         return (this.data.size() == maxSize);
     }
 
-    public void push(int toPush){
+    public void push(T toPush){
         guardAgainstBeingFull();
         data.add(toPush);
     }
 
-    public int pop(){
+    public T pop(){
         guardAgainstBeingEmpty();
-        int toGoOut = this.bottom();
+        T toGoOut = this.floor();
         data.remove(0);
         return toGoOut;
     }
 
-    public int bottom(){
+    public T floor(){
         guardAgainstBeingEmpty();
         return (this.data.get(0));
     }

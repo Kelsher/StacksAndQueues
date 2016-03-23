@@ -2,12 +2,12 @@ import com.sun.deploy.net.proxy.StaticProxyManager;
 
 import java.util.ArrayList;
 
-public class Stack {
-    ArrayList<Integer> data;
+public class Stack<T> {
+    ArrayList<T> data;
     int maxSize;
 
     public Stack(){
-        data = new ArrayList<Integer>();
+        data = new ArrayList<T>();
         maxSize = 5;
     }
 
@@ -19,20 +19,20 @@ public class Stack {
         return (this.data.size() == maxSize);
     }
 
-    public void push (int toPush){
+    public void push (T toPush){
         guardAgainstBeingFull();
         data.add(toPush);
     }
 
-    public int pop (){
+    public T pop (){
         guardAgainstBeingEmpty();
         int topIndex = this.data.size() - 1;
-        int toGoOut = this.data.get(topIndex);
+        T toGoOut = this.data.get(topIndex);
         this.data.remove(topIndex);
         return toGoOut;
     }
 
-    public int top(){
+    public T top(){
         guardAgainstBeingEmpty();
         int topIndex = this.data.size() - 1;
         return (this.data.get(topIndex));
