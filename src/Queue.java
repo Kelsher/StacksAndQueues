@@ -2,11 +2,10 @@ import java.util.ArrayList;
 
 public class Queue<T> {
     ArrayList<T> data;
-    int maxSize;
+    private int maxSize;
 
     public Queue(){
-        data = new ArrayList<T>();
-        maxSize = 5;
+        data = new ArrayList<>();
     }
 
     public boolean isEmpty(){
@@ -24,12 +23,12 @@ public class Queue<T> {
 
     public T pop(){
         guardAgainstBeingEmpty();
-        T toGoOut = this.floor();
+        T toGoOut = this.front();
         data.remove(0);
         return toGoOut;
     }
 
-    public T floor(){
+    public T front(){
         guardAgainstBeingEmpty();
         return (this.data.get(0));
     }
@@ -38,15 +37,19 @@ public class Queue<T> {
         return (this.data.size());
     }
 
+    public void setMaxSize(int maxSize){
+        this.maxSize = maxSize;
+    }
+
     private void guardAgainstBeingEmpty() {
         if (this.isEmpty()) {
-            throw new StackEmptyException();
+            throw new QueueEmptyException();
         }
     }
 
     private void guardAgainstBeingFull(){
         if (this.isFull()) {
-            throw new StackFullException();
+            throw new QueueFullException();
         }
     }
 

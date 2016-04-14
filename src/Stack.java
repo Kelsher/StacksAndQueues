@@ -1,45 +1,52 @@
-import com.sun.deploy.net.proxy.StaticProxyManager;
-
 import java.util.ArrayList;
 
 public class Stack<T> {
     ArrayList<T> data;
-    int maxSize;
+    private int maxSize;
 
-    public Stack(){
-        data = new ArrayList<T>();
-        maxSize = 5;
+    public Stack() {
+        data = new ArrayList<>();
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return (this.data.size() == 0);
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return (this.data.size() == maxSize);
     }
 
-    public void push (T toPush){
+    public void push(T toPush) {
         guardAgainstBeingFull();
+
         data.add(toPush);
     }
 
-    public T pop (){
+    public T pop() {
         guardAgainstBeingEmpty();
+
         int topIndex = this.data.size() - 1;
         T toGoOut = this.data.get(topIndex);
+
         this.data.remove(topIndex);
+
         return toGoOut;
     }
 
-    public T top(){
+    public T top() {
         guardAgainstBeingEmpty();
+
         int topIndex = this.data.size() - 1;
-        return (this.data.get(topIndex));
+
+        return this.data.get(topIndex);
     }
 
-    public int size(){
+    public int size() {
         return (this.data.size());
+    }
+
+    public void setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
     }
 
     private void guardAgainstBeingEmpty() {
@@ -48,7 +55,7 @@ public class Stack<T> {
         }
     }
 
-    private void guardAgainstBeingFull(){
+    private void guardAgainstBeingFull() {
         if (this.isFull()) {
             throw new StackFullException();
         }
